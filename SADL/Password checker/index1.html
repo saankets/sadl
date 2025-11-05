@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<body>
+  Password:<input type="password" id="pass" onkeyup="check()" />
+  <p id="msg"></p>
+
+  <script>
+    function check(){
+        let p=pass.value;
+        let msg="";
+        if (p.length<6){
+            msg="min 6 char";
+        }
+        else if (!/[0-9]/.test(p)){
+            msg="add 1 number";
+        }else if(!/[!@#$%^&*]/.test(p)){
+            msg="char needed"
+        }
+        else{
+            msg="Strong password"
+        }
+        document.getElementById("msg").innerHTML = msg;
+    }
+  </script>
+</body>
+</html>

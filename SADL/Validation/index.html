@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form onsubmit="return v()">
+      <h3>Register</h3>
+      Name: <input id="n" placeholder="Name" /><br />
+      Email: <input id="e" placeholder="Email" /><br />
+      Password: <input id="p" type="password" placeholder="Password" /><br />
+      <button>Submit</button>
+      <p id="m"></p>
+    </form>
+
+    <script>
+      function v() {
+        const name = document.getElementById("n").value.trim();
+        const email = document.getElementById("e").value.trim();
+        const pass = document.getElementById("p").value.trim();
+        let msg = "";
+
+        if (!name) msg = "Name required";
+        else if (!email) msg = "Email required";
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+          msg = "Invalid email";
+        else if (!pass) msg = "Password required";
+        else if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/.test(pass))
+          msg = "Password ≥6 chars, 1 uppercase & 1 special char";
+        else {
+          msg = "Form submitted successfully!";
+          document.forms[0].reset();
+        }
+
+        document.getElementById("m").textContent = msg;
+        return false; // prevent actual submit for demo
+      }
+    </script>
+  </body>
+</html>
